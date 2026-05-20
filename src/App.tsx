@@ -1,4 +1,5 @@
-import { useState, ReactNode } from 'react'
+import { useState } from 'react'
+import type { ReactNode } from 'react' // Perbaikan Error 1: Memisahkan import type
 
 // Pastikan file foto profilmu bernama 'profile.jpg' di folder 'src/assets/'
 import profilePicUrl from './assets/profile.jpg' 
@@ -6,7 +7,7 @@ import profilePicUrl from './assets/profile.jpg'
 import { FaClipboardList, FaCheck, FaTimes, FaChartPie, FaFolderOpen } from 'react-icons/fa' 
 import { GrLike } from 'react-icons/gr'
 
-// 1. Tipe data Task
+// Tipe data Task
 type Task = {
   id: number
   title: string
@@ -112,10 +113,8 @@ function App() {
   return (
     <div className="min-h-screen bg-pink-100 text-gray-800 p-6 font-sans relative">
       
-      {/* --- BAGIAN ATAS (TOP BAR): PROFIL & RINGKASAN --- */}
+      {/* --- BAGIAN ATAS (TOP BAR) --- */}
       <div className="max-w-[95%] mx-auto flex items-center justify-between mb-2">
-        
-        {/* PROFIL (KIRI) */}
         <div className="flex items-center gap-3 bg-white/60 p-2 pr-5 rounded-full shadow-sm border border-white/50 backdrop-blur-sm">
           <img
             src={profilePicUrl}
@@ -129,7 +128,6 @@ function App() {
           </div>
         </div>
 
-        {/* RINGKASAN (KANAN) */}
         <button 
           onClick={() => setIsSummaryOpen(true)}
           className="flex items-center gap-2 px-5 py-2.5 bg-pink-500 hover:bg-pink-600 text-white font-black rounded-full shadow-md transition-all active:scale-95"
@@ -138,7 +136,7 @@ function App() {
         </button>
       </div>
 
-      {/* --- JUDUL UTAMA (TENGAH) --- */}
+      {/* --- JUDUL UTAMA --- */}
       <div className="text-center mb-10">
         <h1 className="text-5xl font-black text-pink-600 drop-shadow-sm mb-2 flex items-center justify-center gap-4">
           <FaCheck className="text-pink-500" /> KUDU NGAPAIN AJH 
@@ -148,7 +146,7 @@ function App() {
         </p>
       </div>
 
-      {/* --- FORM INPUT (DI BAWAH JUDUL) --- */}
+      {/* --- FORM INPUT --- */}
       <div className="max-w-3xl mx-auto flex flex-wrap sm:flex-nowrap gap-2 mb-12">
         <select 
           value={selectedCategory}
@@ -177,7 +175,7 @@ function App() {
         </button>
       </div>
 
-      {/* --- SUMMARY COUNTER (RINGKASAN ANGKA) --- */}
+      {/* --- SUMMARY COUNTER --- */}
       <div className="flex flex-wrap justify-center gap-4 mb-10">
         <div className="bg-white/80 border-b-4 border-pink-400 text-pink-600 px-6 py-2 rounded-2xl text-xs font-black shadow-sm">
           Todo: {getTasksByStatus('todo').length}
@@ -283,11 +281,16 @@ function App() {
               <div className="w-full bg-pink-200 rounded-full h-4 mb-8 overflow-hidden shadow-inner">
                 <div className="bg-pink-500 h-full rounded-full transition-all duration-1000 shadow-lg" style={{ width: `${successRate}%` }}></div>
               </div>
+              
+              {/* Perbaikan Error 2: Menampilkan kembali semua variabel di UI */}
               <div className="grid grid-cols-2 gap-3">
                 <div className="bg-white p-4 rounded-2xl shadow-sm"><p className="text-[10px] text-gray-400 font-bold uppercase">Total</p><p className="text-2xl font-black text-gray-800">{totalTasks}</p></div>
                 <div className="bg-white p-4 rounded-2xl shadow-sm"><p className="text-[10px] text-green-400 font-bold uppercase">Beres</p><p className="text-2xl font-black text-green-600">{completedTasks}</p></div>
+                <div className="bg-white p-4 rounded-2xl shadow-sm"><p className="text-[10px] text-yellow-400 font-bold uppercase">Pending</p><p className="text-2xl font-black text-yellow-600">{pendingTasks}</p></div>
+                <div className="bg-white p-4 rounded-2xl shadow-sm"><p className="text-[10px] text-red-400 font-bold uppercase">Gagal</p><p className="text-2xl font-black text-red-600">{failedTasks}</p></div>
               </div>
             </div>
+            
             <p className="text-gray-600 font-bold italic text-sm leading-relaxed mb-8 px-4">"{summaryMessage}"</p>
             <button onClick={() => setIsSummaryOpen(false)} className="w-full py-4 bg-pink-600 text-white font-black rounded-2xl shadow-lg hover:bg-pink-700 transition-all active:scale-95">Tutup Mantap</button>
           </div>
