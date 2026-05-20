@@ -5,7 +5,7 @@ import profilePicUrl from './assets/profile.jpg'
 
 import { 
   FaClipboardList, FaCheck, FaTimes, FaChartPie, FaFolderOpen, 
-  FaCamera, FaEdit, FaClock, FaTrash, FaSeedling, FaStar, FaFire, 
+  FaCamera,FaClock, FaTrash, FaSeedling, FaStar, FaFire, 
   FaTrophy, FaHeart, FaFingerprint, FaImage, FaSearch, FaCalendarAlt, 
   FaExclamationTriangle, FaSyncAlt, FaMoon, FaSun, FaMicrophone, 
   FaDownload, FaUpload, FaPlus, FaMagic, FaHeadphones, FaGithub, FaRunning, FaCloudUploadAlt
